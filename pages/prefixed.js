@@ -1,6 +1,7 @@
 // npm
 import Link from "next/link"
-import "isomorphic-unfetch"
+// import "isomorphic-unfetch"
+import fetcher from "../lib/fetcher"
 
 const Prefixed = ({ d }) => (
   <div>
@@ -21,7 +22,10 @@ const Prefixed = ({ d }) => (
 
 Prefixed.getInitialProps = async (o) => {
   const p = o.query.prefix
-  const res = await fetch("http://localhost:3000/api/prefixed-keys?prefix=" + p)
+  const res = await fetcher(
+    o.req,
+    "http://localhost:3000/api/prefixed-keys?prefix=" + p
+  )
   const d = await res.json()
   return { d }
 }

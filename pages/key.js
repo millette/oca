@@ -1,6 +1,7 @@
 // npm
 import Link from "next/link"
-import "isomorphic-unfetch"
+// import "isomorphic-unfetch"
+import fetcher from "../lib/fetcher"
 
 const Key = ({ k, d }) => (
   <div>
@@ -29,7 +30,7 @@ const Key = ({ k, d }) => (
 
 Key.getInitialProps = async (o) => {
   const k = o.query.key
-  const res = await fetch("http://localhost:3000/api/one-key?key=" + k)
+  const res = await fetcher(o.req, "http://localhost:3000/api/one-key?key=" + k)
   const d = await res.json()
   return { k, d }
 }

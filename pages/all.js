@@ -1,6 +1,7 @@
 // npm
 import Link from "next/link"
-import "isomorphic-unfetch"
+// import "isomorphic-unfetch"
+import fetcher from "../lib/fetcher"
 
 const All = ({ d }) => (
   <div>
@@ -20,7 +21,7 @@ const All = ({ d }) => (
 )
 
 All.getInitialProps = async (o) => {
-  const res = await fetch("http://localhost:3000/api/all-keys")
+  const res = await fetcher(o.req, "http://localhost:3000/api/all-keys")
   const d = await res.json()
   return { d }
 }

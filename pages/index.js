@@ -1,5 +1,6 @@
 // npm
-import "isomorphic-unfetch"
+// import "isomorphic-unfetch"
+import fetcher from "../lib/fetcher"
 
 const FrontPage = ({ d }) => (
   <div style={{ display: "flex" }}>
@@ -21,7 +22,7 @@ const FrontPage = ({ d }) => (
 )
 
 FrontPage.getInitialProps = async (o) => {
-  const res = await fetch("http://localhost:3000/api/one")
+  const res = await fetcher(o.req, "http://localhost:3000/api/one")
   const d = await res.json()
   return { d }
 }

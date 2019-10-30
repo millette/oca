@@ -1,6 +1,6 @@
 // npm
 import Link from "next/link"
-import "isomorphic-unfetch"
+import fetcher from "../lib/fetcher"
 
 const Tags = ({ t }) => (
   <div>
@@ -23,7 +23,7 @@ const Tags = ({ t }) => (
 
 Tags.getInitialProps = async (o) => {
   const n = o.query.n || 50
-  const res = await fetch("http://localhost:3000/api/tags?n=" + n)
+  const res = await fetcher(o.req, "http://localhost:3000/api/tags?n=" + n)
   const t = await res.json()
   return { t }
 }
