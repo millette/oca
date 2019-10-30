@@ -59,6 +59,6 @@ pipeline(
   glob.stream("**/*.svg", { cwd: "clipart" }),
   tr(),
   jsonstream.stringifyObject(),
-  process.stdout,
+  fs.createWriteStream("metadata.json"),
   (err) => err && console.error(err)
 )
