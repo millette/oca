@@ -10,7 +10,5 @@ export default (req, res) => {
       keys.push(r)
   }
 
-  // const keys = Object.keys(metadata).filter(({ subjects }) => subjects && subjects.indexOf(t) !== -1)
-
   res.status(200).json(keys)
 }
