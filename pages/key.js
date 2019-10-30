@@ -4,8 +4,8 @@ import "isomorphic-unfetch"
 
 const Key = ({ k, d }) => (
   <div>
-    <Link href="/all">
-      <a>Show List</a>
+    <Link href="/tags">
+      <a>Show tags</a>
     </Link>
 
     <div style={{ display: "flex" }}>
