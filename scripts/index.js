@@ -37,7 +37,6 @@ const makeMeta = (filename, data) => {
       (data["dc:creator"] && data["dc:creator"]["dc:title"]) ||
       data["dc:creator"],
     date: data["dc:date"],
-    // language: data["dc:language"],
   }
 
   return metadata
