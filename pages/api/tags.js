@@ -8,10 +8,10 @@ for (const r in metadata) {
 }
 
 const tagsArray = Array.from(tags).sort((a, b) => {
-  const av = a[1]
-  const bv = b[1]
-  if (av > bv) return -1
-  if (av < bv) return 1
+  const av = a[0]
+  const bv = b[0]
+  if (av > bv) return 1
+  if (av < bv) return -1
 })
 
 export default (req, res) => {
