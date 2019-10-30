@@ -7,9 +7,9 @@ const xmlflow = require("xml-flow")
 const glob = require("fast-glob")
 const through = require("through2")
 const uniq = require("lodash.uniq")
+const jsonstream = require("jsonstream2")
 
 const re = /[_-]/g
-// const rep = (x) => x && x.replace(re, " ")
 const rep = (x) => x.replace(re, " ")
 
 const makeMeta = (filename, data) => {
@@ -26,40 +26,39 @@ const makeMeta = (filename, data) => {
   const subject = uniq([
     ...filename
       .split("/")
-      .slice(1, -1)
+      .slice(0, -1)
       .map(rep),
     ...s3,
   ])
     .filter(Boolean)
     .sort()
 
-  return {
+  return [
     filename,
-    title: data["dc:title"],
-    description: data["dc:description"],
-    subject,
-    creator:
-      (data["dc:creator"] && data["dc:creator"]["dc:title"]) ||
-      data["dc:creator"],
-  }
+    {
+      title: data["dc:title"],
+      description: data["dc:description"],
+      subject,
+      creator:
+        (data["dc:creator"] && data["dc:creator"]["dc:title"]) ||
+        data["dc:creator"],
+    },
+  ]
 }
 
 const nop = () => false
 
 const tr = () =>
   through.obj((filename, enc, cb) =>
-    xmlflow(fs.createReadStream(filename))
+    xmlflow(fs.createReadStream(`clipart/${filename}`))
       .once("tag:cc:work", (data) => cb(null, makeMeta(filename, data)))
       .once("error", nop)
   )
 
-const tr2 = () =>
-  through.obj((chunk, enc, cb) => cb(null, JSON.stringify(chunk) + "\n")) //
-
 pipeline(
-  glob.stream("clipart/**/*.svg"),
+  glob.stream("**/*.svg", { cwd: "clipart" }),
   tr(),
-  tr2(),
+  jsonstream.stringifyObject(),
   process.stdout,
   (err) => err && console.error(err)
 )
