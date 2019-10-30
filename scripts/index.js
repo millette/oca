@@ -44,13 +44,14 @@ const makeMeta = (filename, data) => {
   }
 }
 
+const nop = () => false
+
 const tr = () =>
-  through.obj(function(filename, enc, cb) {
+  through.obj((filename, enc, cb) =>
     xmlflow(fs.createReadStream(filename))
-      .on("tag:cc:work", (data) => this.push(makeMeta(filename, data)))
-      .once("error", (error) => cb(null, { filename, error: error.message }))
-      .once("end", cb)
-  })
+      .once("tag:cc:work", (data) => cb(null, makeMeta(filename, data)))
+      .once("error", nop)
+  )
 
 const tr2 = () =>
   through.obj((chunk, enc, cb) => cb(null, JSON.stringify(chunk) + "\n")) //
