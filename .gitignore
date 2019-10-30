@@ -4,5 +4,4 @@ node_modules/
 out/
 .env
 metadata.json
-
-
+oca.code-workspace
