@@ -27,17 +27,9 @@ const Tagged = ({ d, tag }) => (
 
 Tagged.getInitialProps = async (o) => {
   const tag = o.query.tag || ""
-
   const res = await fetch("http://localhost:3000/api/tagged-keys?tag=" + tag)
   const d = await res.json()
   return { tag, d }
-
-  // return { tag: o.query.tag }
-  /*
-  const res = await fetch("http://localhost:3000/api/all-keys")
-  const d = await res.json()
-  return { d }
-  */
 }
 
 export default Tagged

@@ -2,7 +2,7 @@
 import Link from "next/link"
 import "isomorphic-unfetch"
 
-const All = ({ d }) => (
+const Prefixed = ({ d }) => (
   <div>
     <ol>
       {d.map((k) => (
@@ -19,12 +19,11 @@ const All = ({ d }) => (
   </div>
 )
 
-All.getInitialProps = async (o) => {
+Prefixed.getInitialProps = async (o) => {
   const p = o.query.prefix
-
   const res = await fetch("http://localhost:3000/api/prefixed-keys?prefix=" + p)
   const d = await res.json()
   return { d }
 }
 
-export default All
+export default Prefixed

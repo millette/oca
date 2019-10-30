@@ -1,9 +1,7 @@
 // npm
 import "isomorphic-unfetch"
 
-//
-
-const Page = ({ d }) => (
+const FrontPage = ({ d }) => (
   <div style={{ display: "flex" }}>
     <img src="/api/show-one" />
     <div>
@@ -22,10 +20,10 @@ const Page = ({ d }) => (
   </div>
 )
 
-Page.getInitialProps = async (o) => {
+FrontPage.getInitialProps = async (o) => {
   const res = await fetch("http://localhost:3000/api/one")
   const d = await res.json()
   return { d }
 }
 
-export default Page
+export default FrontPage

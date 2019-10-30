@@ -2,7 +2,7 @@
 import Link from "next/link"
 import "isomorphic-unfetch"
 
-const Page = ({ k, d }) => (
+const Key = ({ k, d }) => (
   <div>
     <Link href="/all">
       <a>Show List</a>
@@ -27,11 +27,11 @@ const Page = ({ k, d }) => (
   </div>
 )
 
-Page.getInitialProps = async (o) => {
+Key.getInitialProps = async (o) => {
   const k = o.query.key
   const res = await fetch("http://localhost:3000/api/one-key?key=" + k)
   const d = await res.json()
   return { k, d }
 }
 
-export default Page
+export default Key
