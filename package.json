@@ -51,12 +51,6 @@
     "trailingComma": "es5",
     "arrowParens": "always"
   },
-  "lint-staged": {
-    "*.{html,js,json,md,mdx}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@mdx-js/react": "^1.5.1",
