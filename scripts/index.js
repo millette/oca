@@ -9,6 +9,7 @@ const through = require("through2")
 const uniq = require("lodash.uniq")
 
 const re = /[_-]/g
+// const rep = (x) => x && x.replace(re, " ")
 const rep = (x) => x.replace(re, " ")
 
 const makeMeta = (filename, data) => {
@@ -16,11 +17,12 @@ const makeMeta = (filename, data) => {
 
   if (data["dc:subject"]) {
     if (typeof data["dc:subject"] === "string") {
-      s3 = [data["dc:subject"]]
+      s3 = [rep(data["dc:subject"])]
     } else if (Array.isArray(data["dc:subject"])) {
-      s3 = data["dc:subject"]
+      s3 = data["dc:subject"].filter(Boolean).map(rep)
     }
   }
+
   const subject = uniq([
     ...filename
       .split("/")
@@ -31,7 +33,8 @@ const makeMeta = (filename, data) => {
     .filter(Boolean)
     .sort()
 
-  const metadata = {
+  return {
+    filename,
     title: data["dc:title"],
     description: data["dc:description"],
     subject,
@@ -39,16 +42,12 @@ const makeMeta = (filename, data) => {
       (data["dc:creator"] && data["dc:creator"]["dc:title"]) ||
       data["dc:creator"],
   }
-
-  return metadata
 }
 
 const tr = () =>
   through.obj(function(filename, enc, cb) {
     xmlflow(fs.createReadStream(filename))
-      .on("tag:cc:work", (data) =>
-        this.push({ filename, metadata: makeMeta(filename, data) })
-      )
+      .on("tag:cc:work", (data) => this.push(makeMeta(filename, data)))
       .once("error", (error) => cb(null, { filename, error: error.message }))
       .once("end", cb)
   })
