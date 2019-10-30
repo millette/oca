@@ -27,7 +27,9 @@ const makeMeta = (filename, data) => {
       .slice(1, -1)
       .map(rep),
     ...s3,
-  ]).sort()
+  ])
+    .filter(Boolean)
+    .sort()
 
   const metadata = {
     title: data["dc:title"],
@@ -36,7 +38,6 @@ const makeMeta = (filename, data) => {
     creator:
       (data["dc:creator"] && data["dc:creator"]["dc:title"]) ||
       data["dc:creator"],
-    date: data["dc:date"],
   }
 
   return metadata
