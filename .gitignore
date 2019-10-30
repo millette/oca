@@ -1,5 +1,7 @@
 clipart
 node_modules/
+.next/
+out/
 .env
 metadata.json
 
