@@ -5,7 +5,7 @@ import fetcher from "../lib/fetcher"
 
 const Key = ({ k, d }) => (
   <div>
-    <Link href="/tags">
+    <Link href="/">
       <a>Show tags</a>
     </Link>
 
