@@ -1,6 +1,5 @@
 // npm
 import Link from "next/link"
-// import "isomorphic-unfetch"
 import fetcher from "../lib/fetcher"
 
 const Prefixed = ({ d }) => (
