@@ -5,7 +5,7 @@ import fetcher from "../lib/fetcher"
 const Tagged = ({ d, tag }) => (
   <div>
     <h1>
-      <Link href="/tags">
+      <Link href="/">
         <a>All tags</a>
       </Link>
     </h1>
