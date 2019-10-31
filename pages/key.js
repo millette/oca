@@ -2,14 +2,14 @@
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
 
-const Key = ({ k, d }) => (
+const Key = ({ k, d, __html }) => (
   <div>
     <Link href="/">
       <a>Show tags</a>
     </Link>
 
     <div style={{ display: "flex" }}>
-      <img src={"/api/show-one-key?key=" + k} />
+      <div dangerouslySetInnerHTML={{ __html }} />
       <div>
         <h1>{d.title}</h1>
         <h2>{d.creator}</h2>
@@ -29,9 +29,17 @@ const Key = ({ k, d }) => (
 
 Key.getInitialProps = async (o) => {
   const k = o.query.key
+
   const res = await fetcher(o.req, "http://localhost:3000/api/one-key?key=" + k)
   const d = await res.json()
-  return { k, d }
+
+  const res2 = await fetcher(
+    o.req,
+    "http://localhost:3000/api/show-one-key?key=" + k
+  )
+
+  const __html = await res2.text()
+  return { k, d, __html }
 }
 
 export default Key
