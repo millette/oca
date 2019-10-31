@@ -16,12 +16,15 @@ const Key = ({ k, d, __html }) => (
         {d.description && <p>{d.description}</p>}
         {d.subject && d.subject.length && (
           <ul>
-            {d.subject.map((subject) => (
-              <li key={subject}>{subject}</li>
+            {d.subject.map((tag) => (
+              <li key={tag}>
+                <Link href={{ pathname: "/tagged", query: { tag } }}>
+                  <a>{tag}</a>
+                </Link>
+              </li>
             ))}
           </ul>
         )}
-        <pre>{JSON.stringify(d, null, 2)}</pre>
       </div>
     </div>
   </div>
