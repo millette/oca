@@ -2,7 +2,6 @@
 
 // npm
 import App from "next/app"
-import Link from "next/link"
 import {
   jsx,
   Layout,
@@ -16,9 +15,10 @@ import {
 } from "theme-ui"
 import { roboto as theme } from "@theme-ui/presets"
 
-theme.styles.header = {
-  display: "block",
-}
+if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
+
+if (!theme.styles.header) theme.styles.header = {}
+theme.styles.header.display = "block"
 
 const components = {
   /*
@@ -44,7 +44,6 @@ class MyApp extends App {
                 <Styled.h2>A work in progress</Styled.h2>
               </Container>
             </Header>
-
             <Main>
               <Container>
                 <Component {...pageProps} />
