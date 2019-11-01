@@ -14,8 +14,20 @@ const svgo = new SVGO({
 export default async (req, res) => {
   if (!req.query.key) return res.status(404).end("not found")
   const cnt = await fs.readFile(`clipart/${req.query.key}`)
-  const { data } = await svgo.optimize(cnt)
-  // console.log(cnt.length, data.length, cnt.length / data.length)
-  res.status(200).setHeader("Content-Type", "image/svg+xml")
-  res.end(data)
+  const { data: svg } = await svgo.optimize(cnt)
+
+  if (!req.query.sizes) {
+    res.status(200).setHeader("Content-Type", "image/svg+xml")
+    return res.end(svg)
+  }
+
+  const sizes = {
+    original: cnt.length,
+    optimized: svg.length,
+  }
+
+  res.status(200).json({
+    sizes,
+    svg,
+  })
 }
