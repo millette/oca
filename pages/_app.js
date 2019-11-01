@@ -13,7 +13,7 @@ import {
   Container,
   Footer,
 } from "theme-ui"
-import { roboto as theme } from "@theme-ui/presets"
+import { future as theme } from "@theme-ui/presets"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
