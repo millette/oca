@@ -47,7 +47,8 @@ Key.getInitialProps = async (o) => {
 
   const res2 = await fetcher(
     o.req,
-    "http://localhost:3000/api/show-one-key?key=" + k
+    // "http://localhost:3000/api/show-one-key?key=" + k
+    "http://localhost:3000/api/opt-one-key?key=" + k
   )
 
   const svg = await res2.text()
