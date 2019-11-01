@@ -4,6 +4,9 @@
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
+import filesize from "filesize"
+
+const size = filesize.partial({ standard: "iec" })
 
 // self
 import Svg from "../components/svg"
@@ -16,7 +19,7 @@ const Key = ({ d, svg, sizes, k }) => (
       </Link>
     </Styled.h3>
     <Flex sx={{ flexWrap: "wrap" }}>
-      <Box sx={{ overflowX: "hidden", width: ["100%", "50%"] }}>
+      <Box sx={{ pr: "1rem", overflowX: "hidden", width: ["100%", "50%"] }}>
         <Svg svg={svg} />
       </Box>
       <Box sx={{ width: ["100%", "50%"] }}>
@@ -24,39 +27,46 @@ const Key = ({ d, svg, sizes, k }) => (
         <Styled.h2>by {d.creator}</Styled.h2>
         {d.description && <Styled.p>{d.description}</Styled.p>}
         <Styled.table>
-          <Styled.tr>
-            <Styled.th>Original</Styled.th>
+          <tbody>
+            <Styled.tr>
+              <Styled.th>Original</Styled.th>
 
-            <Styled.td sx={{ fontStyle: "italic" }}>with metadata</Styled.td>
+              <Styled.td sx={{ fontStyle: "italic" }}>with metadata</Styled.td>
 
-            <Styled.td>
-              <Styled.a href={`/api/show-one-key?key=${k}`} download>
-                download
-              </Styled.a>
-            </Styled.td>
+              <Styled.td>
+                <Styled.a href={`/api/show-one-key?key=${k}`} download>
+                  download
+                </Styled.a>
+              </Styled.td>
 
-            <Styled.td sx={{ textAlign: "right" }}>{sizes.original}</Styled.td>
-          </Styled.tr>
+              <Styled.td sx={{ textAlign: "right" }}>
+                {size(sizes.original)}
+              </Styled.td>
+            </Styled.tr>
 
-          <Styled.tr>
-            <Styled.th>Optimized</Styled.th>
-            <Styled.td sx={{ fontStyle: "italic" }}>as shown</Styled.td>
+            <Styled.tr>
+              <Styled.th>Optimized</Styled.th>
+              <Styled.td sx={{ fontStyle: "italic" }}>as shown</Styled.td>
 
-            <Styled.td>
-              <Styled.a href={`/api/opt-one-key?key=${k}`} download>
-                download
-              </Styled.a>
-            </Styled.td>
+              <Styled.td>
+                <Styled.a href={`/api/opt-one-key?key=${k}`} download>
+                  download
+                </Styled.a>
+              </Styled.td>
 
-            <Styled.td sx={{ textAlign: "right" }}>{sizes.optimized}</Styled.td>
-          </Styled.tr>
+              <Styled.td sx={{ textAlign: "right" }}>
+                {size(sizes.optimized)}
+              </Styled.td>
+            </Styled.tr>
 
-          <Styled.tr>
-            <Styled.th>Ratio</Styled.th>
-            <Styled.td colSpan={3} sx={{ textAlign: "right" }}>
-              {Math.round((100 * sizes.original) / sizes.optimized) / 100}
-            </Styled.td>
-          </Styled.tr>
+            <Styled.tr>
+              <Styled.th>Ratio</Styled.th>
+              <Styled.td sx={{ fontStyle: "italic" }}>saving</Styled.td>
+              <Styled.td colSpan={2} sx={{ textAlign: "right" }}>
+                {100 - Math.round((100 * sizes.optimized) / sizes.original)}%
+              </Styled.td>
+            </Styled.tr>
+          </tbody>
         </Styled.table>
 
         {d.subject && d.subject.length && (
