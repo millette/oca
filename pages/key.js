@@ -3,17 +3,21 @@
 // npm
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Flex, Box } from "theme-ui"
 
 const Key = ({ d, __html }) => (
-  <div>
-    <Link passHref href="/">
-      <Styled.a>Show tags</Styled.a>
-    </Link>
-
-    <div style={{ display: "flex" }}>
-      <div dangerouslySetInnerHTML={{ __html }} />
-      <div>
+  <>
+    <Styled.h3>
+      <Link passHref href="/">
+        <Styled.a>Show tags</Styled.a>
+      </Link>
+    </Styled.h3>
+    <Flex sx={{ flexWrap: "wrap" }}>
+      <Box
+        sx={{ width: ["100%", "50%"] }}
+        dangerouslySetInnerHTML={{ __html }}
+      />
+      <Box sx={{ width: ["100%", "50%"] }}>
         <Styled.h1>{d.title}</Styled.h1>
         <Styled.h2>by {d.creator}</Styled.h2>
         {d.description && <Styled.p>{d.description}</Styled.p>}
@@ -28,9 +32,9 @@ const Key = ({ d, __html }) => (
             ))}
           </Styled.ul>
         )}
-      </div>
-    </div>
-  </div>
+      </Box>
+    </Flex>
+  </>
 )
 
 Key.getInitialProps = async (o) => {
