@@ -15,7 +15,7 @@ const Key = ({ d, svg, sizes, k }) => {
     <>
       <Styled.h3>
         <Link passHref href="/">
-          <Styled.a>Show tags</Styled.a>
+          <Styled.a>All tags</Styled.a>
         </Link>
       </Styled.h3>
       <Flex sx={{ flexWrap: "wrap" }}>
@@ -55,6 +55,13 @@ const Key = ({ d, svg, sizes, k }) => {
 
               <Styled.td sx={{ textAlign: "right" }}>
                 {sizes.optimized}
+              </Styled.td>
+            </Styled.tr>
+
+            <Styled.tr>
+              <Styled.th>Ratio</Styled.th>
+              <Styled.td colSpan={3} sx={{ textAlign: "right" }}>
+                {Math.round((100 * sizes.original) / sizes.optimized) / 100}
               </Styled.td>
             </Styled.tr>
           </Styled.table>
