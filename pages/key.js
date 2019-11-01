@@ -5,7 +5,10 @@ import Link from "next/link"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 
-const Key = ({ d, __html }) => (
+// self
+import Svg from "../components/svg"
+
+const Key = ({ d, svg }) => (
   <>
     <Styled.h3>
       <Link passHref href="/">
@@ -13,10 +16,9 @@ const Key = ({ d, __html }) => (
       </Link>
     </Styled.h3>
     <Flex sx={{ flexWrap: "wrap" }}>
-      <Box
-        sx={{ width: ["100%", "50%"] }}
-        dangerouslySetInnerHTML={{ __html }}
-      />
+      <Box sx={{ width: ["100%", "50%"] }}>
+        <Svg svg={svg} />
+      </Box>
       <Box sx={{ width: ["100%", "50%"] }}>
         <Styled.h1>{d.title}</Styled.h1>
         <Styled.h2>by {d.creator}</Styled.h2>
@@ -48,8 +50,8 @@ Key.getInitialProps = async (o) => {
     "http://localhost:3000/api/show-one-key?key=" + k
   )
 
-  const __html = await res2.text()
-  return { d, __html }
+  const svg = await res2.text()
+  return { d, svg }
 }
 
 export default Key
