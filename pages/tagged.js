@@ -1,27 +1,31 @@
+/** @jsx jsx */
+
 // npm
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
+import { jsx, Styled } from "theme-ui"
 
 const Tagged = ({ d, tag }) => (
   <div>
-    <h1>
-      <Link href="/">
-        <a>All tags</a>
+    <Styled.h1>
+      <Link passHref href="/">
+        <Styled.a>All tags</Styled.a>
       </Link>
-    </h1>
-    <h2>Tagged with {tag}</h2>
-    <ol>
+    </Styled.h1>
+    <Styled.h2>Tagged with {tag}</Styled.h2>
+    <Styled.ol>
       {d.map((k) => (
-        <li key={k}>
+        <Styled.li key={k}>
           <Link
+            passHref
             href={{ pathname: "/key", query: { key: k } }}
             as={`/key?key=${k}`}
           >
-            <a>{k}</a>
+            <Styled.a>{k}</Styled.a>
           </Link>
-        </li>
+        </Styled.li>
       ))}
-    </ol>
+    </Styled.ol>
   </div>
 )
 

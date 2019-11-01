@@ -1,29 +1,32 @@
+/** @jsx jsx */
+
 // npm
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
+import { jsx, Styled } from "theme-ui"
 
-const Key = ({ k, d, __html }) => (
+const Key = ({ d, __html }) => (
   <div>
-    <Link href="/">
-      <a>Show tags</a>
+    <Link passHref href="/">
+      <Styled.a>Show tags</Styled.a>
     </Link>
 
     <div style={{ display: "flex" }}>
       <div dangerouslySetInnerHTML={{ __html }} />
       <div>
-        <h1>{d.title}</h1>
-        <h2>{d.creator}</h2>
-        {d.description && <p>{d.description}</p>}
+        <Styled.h1>{d.title}</Styled.h1>
+        <Styled.h2>by {d.creator}</Styled.h2>
+        {d.description && <Styled.p>{d.description}</Styled.p>}
         {d.subject && d.subject.length && (
-          <ul>
+          <Styled.ul>
             {d.subject.map((tag) => (
-              <li key={tag}>
-                <Link href={{ pathname: "/tagged", query: { tag } }}>
-                  <a>{tag}</a>
+              <Styled.li key={tag}>
+                <Link passHref href={{ pathname: "/tagged", query: { tag } }}>
+                  <Styled.a>{tag}</Styled.a>
                 </Link>
-              </li>
+              </Styled.li>
             ))}
-          </ul>
+          </Styled.ul>
         )}
       </div>
     </div>
@@ -42,7 +45,7 @@ Key.getInitialProps = async (o) => {
   )
 
   const __html = await res2.text()
-  return { k, d, __html }
+  return { d, __html }
 }
 
 export default Key

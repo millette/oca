@@ -1,23 +1,27 @@
+/** @jsx jsx */
+
 // npm
 import Link from "next/link"
 import fetcher from "../lib/fetcher"
+import { jsx, Styled } from "theme-ui"
 
 const Tags = ({ t }) => (
   <div>
-    <ol>
+    <Styled.ol>
       {t.map(([k, n]) => (
-        <li key={k}>
+        <Styled.li key={k}>
           <Link
+            passHref
             href={{ pathname: "/tagged", query: { tag: k } }}
             as={`/tagged?tag=${k}`}
           >
-            <a>
+            <Styled.a>
               {k} ({n})
-            </a>
+            </Styled.a>
           </Link>
-        </li>
+        </Styled.li>
       ))}
-    </ol>
+    </Styled.ol>
   </div>
 )
 
