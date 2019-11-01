@@ -54,6 +54,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@mdx-js/react": "^1.5.1",
+    "@theme-ui/presets": "^0.2.44",
     "fast-glob": "^3.1.0",
     "isomorphic-unfetch": "^3.0.0",
     "jsonstream2": "^3.0.0",
