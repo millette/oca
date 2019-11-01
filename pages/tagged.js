@@ -6,27 +6,27 @@ import fetcher from "../lib/fetcher"
 import { jsx, Styled } from "theme-ui"
 
 const Tagged = ({ d, tag }) => (
-  <div>
-    <Styled.h1>
+  <>
+    <Styled.h3>
       <Link passHref href="/">
         <Styled.a>All tags</Styled.a>
       </Link>
-    </Styled.h1>
-    <Styled.h2>Tagged with {tag}</Styled.h2>
+    </Styled.h3>
+    <Styled.h4>Tagged with {tag}</Styled.h4>
     <Styled.ol>
-      {d.map((k) => (
-        <Styled.li key={k}>
+      {d.map((key) => (
+        <Styled.li key={key}>
           <Link
             passHref
-            href={{ pathname: "/key", query: { key: k } }}
-            as={`/key?key=${k}`}
+            href={{ pathname: "/key", query: { key } }}
+            as={`/key?key=${key}`}
           >
-            <Styled.a>{k}</Styled.a>
+            <Styled.a>{key}</Styled.a>
           </Link>
         </Styled.li>
       ))}
     </Styled.ol>
-  </div>
+  </>
 )
 
 Tagged.getInitialProps = async (o) => {
