@@ -16,17 +16,33 @@ const svgo = new SVGO({
   ],
 })
 
-const keys = Object.keys(metadata)
+const allKeys = Object.keys(metadata)
 
 const optOne = async (fn) => {
-  const cnt = await fs.readFile(`clipart/${fn}`)
-  const { data: svg } = await svgo.optimize(cnt)
-  return { svg, fn }
+  try {
+    const cnt = await fs.readFile(`clipart/${fn}`)
+    const { data: svg } = await svgo.optimize(cnt)
+    return { svg, fn }
+  } catch (e) {
+    // console.error('Oupsy:', e)
+  }
 }
 
 export default async (req, res) => {
-  const s = sample(keys, 12)
+  const tag = req.query.tag
+
+  let keys = []
+  if (tag) {
+    for (const r in metadata) {
+      if (metadata[r].subject && metadata[r].subject.indexOf(tag) !== -1)
+        keys.push(r)
+    }
+  } else {
+    keys = allKeys
+  }
+
+  const s = sample(keys, 20)
 
   const t = await Promise.all(s.map(optOne))
-  res.status(200).json(t)
+  res.status(200).json(t.filter(Boolean).slice(0, 12))
 }
