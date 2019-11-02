@@ -2,13 +2,13 @@
 
 // npm
 import App from "next/app"
+import Link from "next/link"
 import Router from "next/router"
 import Head from "next/head"
 import NProgress from "nprogress"
 import {
   jsx,
   Layout,
-  ThemeProvider,
   Styled,
   ColorMode,
   Header,
@@ -17,6 +17,7 @@ import {
   Footer,
   Flex,
   Box,
+  ThemeProvider,
 } from "theme-ui"
 import { future as theme } from "@theme-ui/presets"
 
@@ -32,8 +33,23 @@ if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 if (!theme.styles.header) theme.styles.header = {}
 theme.styles.header.display = "block"
 
-const nStart = () => NProgress.start()
-const nDone = () => NProgress.done()
+let routeTimer
+
+const nStart = () => {
+  NProgress.start()
+  const $svg = document.querySelector("header svg")
+  // FIXME: Use request animation frame.....
+  routeTimer = setInterval(() => {
+    const n = Math.round((360 * (Date.now() % 700)) / 750)
+    $svg.style.transform = `rotate(${n}deg)`
+  }, 17)
+}
+
+const nDone = () => {
+  NProgress.done()
+  clearInterval(routeTimer)
+}
+
 Router.events.on("routeChangeStart", nStart)
 Router.events.on("routeChangeComplete", nDone)
 Router.events.on("routeChangeError", nDone)
@@ -44,9 +60,31 @@ const components = {
   Nav,
   Flex,
   Box,
+  a: ({ href, children }) => (
+    <Link href={href} passHref>
+      <Styled.a>{children}</Styled.a>
+    </Link>
+  ),
 }
 
 class MyApp extends App {
+  /*
+  static async getInitialProps(appContext) {
+    // calls page's `getInitialProps` and fills `appProps.pageProps`
+    const appProps = await App.getInitialProps(appContext);
+      return { ...appProps, ron: "nor" }
+  }
+  */
+
+  /*
+  state = { hs: "" }
+
+  componentDidMount() {
+    this.setState({ hs: "OK" })
+
+  }
+  */
+
   render() {
     const { Component, pageProps } = this.props
     return (
