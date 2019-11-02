@@ -10,12 +10,7 @@ import Sample from "../components/sample"
 
 const Tagged = ({ d, tag, t2 }) => (
   <>
-    <Styled.h3>
-      <Link passHref href="/tags">
-        <Styled.a>All tags</Styled.a>
-      </Link>
-    </Styled.h3>
-    <Styled.h4>Tagged with {tag}</Styled.h4>
+    <Styled.h3>Tagged with {tag}</Styled.h3>
 
     <Flex sx={{ flexWrap: "wrap" }}>
       <Box sx={{ width: ["100%", "50%"] }}>
