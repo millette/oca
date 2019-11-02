@@ -8,11 +8,16 @@ import { jsx, Flex, Box } from "theme-ui"
 import Svg from "./svg"
 
 const Sample = ({ data }) => (
-  <Flex sx={{ maxHeight: 200, flexWrap: "wrap" }}>
+  <Flex sx={{ flexWrap: "wrap" }}>
     {data.map(({ svg, fn }) => (
       <Box
         key={fn}
-        sx={{ p: 16, overflow: "hidden", width: ["100%", "33.333%"] }}
+        sx={{
+          p: 16,
+          maxHeight: "200px",
+          overflow: "hidden",
+          width: ["100%", "33.333%"],
+        }}
       >
         <Link href={{ pathname: "/key", query: { key: fn } }}>
           <a>
