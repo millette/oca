@@ -18,26 +18,24 @@ import {
 } from "theme-ui"
 import { future as theme } from "@theme-ui/presets"
 
+// self
+import Sample from "../components/sample"
+import Svg from "../components/svg"
+
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
 if (!theme.styles.header) theme.styles.header = {}
 theme.styles.header.display = "block"
 
-Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`)
-  NProgress.start()
-})
-Router.events.on("routeChangeComplete", () => NProgress.done())
-Router.events.on("routeChangeError", () => NProgress.done())
+const nStart = () => NProgress.start()
+const nDone = () => NProgress.done()
+Router.events.on("routeChangeStart", nStart)
+Router.events.on("routeChangeComplete", nDone)
+Router.events.on("routeChangeError", nDone)
 
 const components = {
-  /*
-  a: ({ children, href }) => (
-    <Link href={href} passHref>
-      <Styled.a>{children}</Styled.a>
-    </Link>
-  ),
-  */
+  Sample,
+  Svg,
 }
 
 class MyApp extends App {
