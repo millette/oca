@@ -11,7 +11,7 @@ import Sample from "../components/sample"
 const Tagged = ({ d, tag, t2 }) => (
   <>
     <Styled.h3>
-      <Link passHref href="/">
+      <Link passHref href="/tags">
         <Styled.a>All tags</Styled.a>
       </Link>
     </Styled.h3>

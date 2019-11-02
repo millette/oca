@@ -14,7 +14,7 @@ import Svg from "../components/svg"
 const Key = ({ d, svg, sizes, k }) => (
   <>
     <Styled.h3>
-      <Link passHref href="/">
+      <Link passHref href="/tags">
         <Styled.a>All tags</Styled.a>
       </Link>
     </Styled.h3>
