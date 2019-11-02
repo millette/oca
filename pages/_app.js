@@ -21,6 +21,7 @@ import { future as theme } from "@theme-ui/presets"
 // self
 import Sample from "../components/sample"
 import Svg from "../components/svg"
+import FooterMdx from "../components/footer.mdx"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
@@ -62,7 +63,7 @@ class MyApp extends App {
             </Main>
             <Footer>
               <Container>
-                <Styled.p>Footer stuff</Styled.p>
+                <FooterMdx />
               </Container>
             </Footer>
           </Layout>
