@@ -6,7 +6,7 @@ import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 
 // self
-import Svg from "../components/svg"
+import Sample from "../components/sample"
 
 const Tags = ({ t, t2 }) => (
   <>
@@ -31,20 +31,7 @@ const Tags = ({ t, t2 }) => (
       </Box>
 
       <Box sx={{ width: ["100%", "50%"] }}>
-        <Flex sx={{ maxHeight: 200, flexWrap: "wrap" }}>
-          {t2.map(({ svg, fn }) => (
-            <Box
-              key={fn}
-              sx={{ p: 16, overflow: "hidden", width: ["100%", "33.333%"] }}
-            >
-              <Link href={{ pathname: "/key", query: { key: fn } }}>
-                <a>
-                  <Svg svg={svg} />
-                </a>
-              </Link>
-            </Box>
-          ))}
-        </Flex>
+        <Sample data={t2} />
       </Box>
     </Flex>
   </>
