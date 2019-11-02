@@ -41,8 +41,8 @@ export default async (req, res) => {
     keys = allKeys
   }
 
-  const s = sample(keys, 20)
+  const s = sample(keys, 8)
 
   const t = await Promise.all(s.map(optOne))
-  res.status(200).json(t.filter(Boolean).slice(0, 12))
+  res.status(200).json(t.filter(Boolean).slice(0, 6))
 }
