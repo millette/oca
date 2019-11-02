@@ -34,7 +34,7 @@ const Tags = ({ t, t2 }) => (
 )
 
 Tags.getInitialProps = async (o) => {
-  const x = await Promise.all([
+  const r = await Promise.all([
     fetcher(o.req, "api/tags?n=" + (o.query.n || 50)),
     fetcher(o.req, "api/sample"),
   ])
