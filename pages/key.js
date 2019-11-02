@@ -13,10 +13,10 @@ import Svg from "../components/svg"
 
 const Key = ({ d, svg, sizes, k }) => (
   <Flex sx={{ flexWrap: "wrap" }}>
-    <Box sx={{ pr: "1rem", overflowX: "hidden", width: ["100%", "50%"] }}>
+    <Box sx={{ overflowX: "hidden", width: ["100%", "50%"] }}>
       <Svg svg={svg} />
     </Box>
-    <Box sx={{ width: ["100%", "50%"] }}>
+    <Box sx={{ pl: "1rem", width: ["100%", "50%"] }}>
       <Styled.h1>{d.title}</Styled.h1>
       <Styled.h2>by {d.creator}</Styled.h2>
       {d.description && <Styled.p>{d.description}</Styled.p>}
