@@ -22,6 +22,7 @@ import { future as theme } from "@theme-ui/presets"
 import Sample from "../components/sample"
 import Svg from "../components/svg"
 import FooterMdx from "../components/footer.mdx"
+import HeaderMdx from "../components/header.mdx"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
@@ -52,8 +53,7 @@ class MyApp extends App {
           <Layout>
             <Header>
               <Container>
-                <Styled.h1>OpenClipArt</Styled.h1>
-                <Styled.h2>A work in progress</Styled.h2>
+                <HeaderMdx />
               </Container>
             </Header>
             <Main>
