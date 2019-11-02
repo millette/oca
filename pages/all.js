@@ -20,7 +20,8 @@ const All = ({ d }) => (
 )
 
 All.getInitialProps = async (o) => {
-  const res = await fetcher(o.req, "http://localhost:3000/api/all-keys")
+  // const res = await fetcher(o.req, "http://localhost:3000/api/all-keys")
+  const res = await fetcher(o.req, "api/all-keys")
   const d = await res.json()
   return { d }
 }

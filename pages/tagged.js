@@ -44,13 +44,15 @@ Tagged.getInitialProps = async (o) => {
   const tag = o.query.tag || ""
   const res = await fetcher(
     o.req,
-    "http://localhost:3000/api/tagged-keys?tag=" + tag
+    // "http://localhost:3000/api/tagged-keys?tag=" + tag
+    "api/tagged-keys?tag=" + tag
   )
   const d = await res.json()
 
   const res2 = await fetcher(
     o.req,
-    "http://localhost:3000/api/sample?tag=" + tag
+    // "http://localhost:3000/api/sample?tag=" + tag
+    "api/sample?tag=" + tag
   )
   const t2 = await res2.json()
 

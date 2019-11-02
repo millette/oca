@@ -23,7 +23,8 @@ Prefixed.getInitialProps = async (o) => {
   const p = o.query.prefix
   const res = await fetcher(
     o.req,
-    "http://localhost:3000/api/prefixed-keys?prefix=" + p
+    // "http://localhost:3000/api/prefixed-keys?prefix=" + p
+    "api/prefixed-keys?prefix=" + p
   )
   const d = await res.json()
   return { d }

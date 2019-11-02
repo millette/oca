@@ -39,10 +39,12 @@ const Tags = ({ t, t2 }) => (
 
 Tags.getInitialProps = async (o) => {
   const n = o.query.n || 50
-  const res = await fetcher(o.req, "http://localhost:3000/api/tags?n=" + n)
+  // const res = await fetcher(o.req, "http://localhost:3000/api/tags?n=" + n)
+  const res = await fetcher(o.req, "api/tags?n=" + n)
   const t = await res.json()
 
-  const res2 = await fetcher(o.req, "http://localhost:3000/api/sample")
+  // const res2 = await fetcher(o.req, "http://localhost:3000/api/sample")
+  const res2 = await fetcher(o.req, "api/sample")
   const t2 = await res2.json()
 
   return { t, t2 }
