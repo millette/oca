@@ -15,12 +15,15 @@ import {
   Main,
   Container,
   Footer,
+  Flex,
+  Box,
 } from "theme-ui"
 import { future as theme } from "@theme-ui/presets"
 
 // self
 import Sample from "../components/sample"
 import Svg from "../components/svg"
+import Nav from "../components/nav"
 import FooterMdx from "../components/footer.mdx"
 import HeaderMdx from "../components/header.mdx"
 
@@ -38,6 +41,9 @@ Router.events.on("routeChangeError", nDone)
 const components = {
   Sample,
   Svg,
+  Nav,
+  Flex,
+  Box,
 }
 
 class MyApp extends App {
