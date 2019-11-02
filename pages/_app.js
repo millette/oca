@@ -2,6 +2,9 @@
 
 // npm
 import App from "next/app"
+import Router from "next/router"
+import Head from "next/head"
+import NProgress from "nprogress"
 import {
   jsx,
   Layout,
@@ -20,6 +23,13 @@ if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 if (!theme.styles.header) theme.styles.header = {}
 theme.styles.header.display = "block"
 
+Router.events.on("routeChangeStart", (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on("routeChangeComplete", () => NProgress.done())
+Router.events.on("routeChangeError", () => NProgress.done())
+
 const components = {
   /*
   a: ({ children, href }) => (
@@ -35,6 +45,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ThemeProvider components={components} theme={theme}>
+        <Head>
+          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+        </Head>
         <ColorMode />
         <Styled.root>
           <Layout>
