@@ -7,7 +7,4 @@ import { tosh as theme } from "@theme-ui/presets"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
-if (!theme.styles.header) theme.styles.header = {}
-theme.styles.header.display = "block"
-
 export default theme
