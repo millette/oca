@@ -101,4 +101,10 @@ Point your browser at <http://localhost:3000/> and voilà, a production build! Y
 
 ## License
 
+### Software
+
 AGPL-v3 2019 © [Robin Millette](http://robin.millette.info/)
+
+### Clip arts
+
+Public domain 2005 by various creators
