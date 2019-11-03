@@ -24,35 +24,28 @@ const Key = ({ d, svg, sizes, k }) => (
         <tbody>
           <Styled.tr>
             <Styled.th>Original</Styled.th>
-
             <Styled.td sx={{ fontStyle: "italic" }}>with metadata</Styled.td>
-
             <Styled.td>
               <Styled.a href={`/api/show-one-key?key=${k}`} download>
                 download
               </Styled.a>
             </Styled.td>
-
             <Styled.td style={{ textAlign: "right" }}>
               {size(sizes.original)}
             </Styled.td>
           </Styled.tr>
-
           <Styled.tr>
             <Styled.th>Optimized</Styled.th>
             <Styled.td sx={{ fontStyle: "italic" }}>as shown</Styled.td>
-
             <Styled.td>
               <Styled.a href={`/api/opt-one-key?key=${k}`} download>
                 download
               </Styled.a>
             </Styled.td>
-
             <Styled.td style={{ textAlign: "right" }}>
               {size(sizes.optimized)}
             </Styled.td>
           </Styled.tr>
-
           <Styled.tr>
             <Styled.th>Ratio</Styled.th>
             <Styled.td colSpan={2} sx={{ fontStyle: "italic" }}>
