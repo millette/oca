@@ -41,7 +41,7 @@ git clone https://github.com/millette/oca.git
 cd oca
 npm install
 ln -s [CLIPART_DIR] # From the `openclipart` requirement above.
-ln -s README.md pages/readme.md #
+ln -s README.md pages/readme.md # Link readme page.
 node scripts/index # 2 minutes to generate `metadata.json` file.
 ```
 
@@ -104,8 +104,8 @@ Point your browser at <http://localhost:3000/> and voilà, a production build! Y
 
 ### Software
 
-AGPL-v3 2019 © [Robin Millette](http://robin.millette.info/)
+AGPL-v3 2019 © [Robin Millette](http://robin.millette.info/).
 
 ### Clip arts
 
-Public domain 2005 by various creators
+Public domain 2005 by [various creators](https://openclipart.org/).
