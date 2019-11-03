@@ -25,9 +25,11 @@ import { future as theme } from "@theme-ui/presets"
 import Sample from "../components/sample"
 import Svg from "../components/svg"
 import Nav from "../components/nav"
-import FooterMdx from "../components/footer.mdx"
-import HeaderMdx from "../components/header.mdx"
 import ExternalLink from "../components/external-link"
+import FooterMdx from "../components/footer.mdx"
+import Info from "../components/info.mdx"
+import Credits from "../components/credits.mdx"
+import HeaderMdx from "../components/header.mdx"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
@@ -65,6 +67,8 @@ const components = {
   Nav,
   Flex,
   Box,
+  Credits,
+  Info,
   a: ({ href, children }) =>
     isAbsolute(href) ? (
       <ExternalLink href={href}>{children}</ExternalLink>
