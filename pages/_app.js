@@ -19,9 +19,9 @@ import {
   Box,
   ThemeProvider,
 } from "theme-ui"
-import { future as theme } from "@theme-ui/presets"
 
 // self
+import theme from "../theme"
 import Sample from "../components/sample"
 import Svg from "../components/svg"
 import Nav from "../components/nav"
@@ -30,11 +30,6 @@ import FooterMdx from "../components/footer.mdx"
 import Info from "../components/info.mdx"
 import Credits from "../components/credits.mdx"
 import HeaderMdx from "../components/header.mdx"
-
-if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
-
-if (!theme.styles.header) theme.styles.header = {}
-theme.styles.header.display = "block"
 
 let routeTimer
 

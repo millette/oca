@@ -1,22 +1,9 @@
 // npm
 import { tosh as theme } from "@theme-ui/presets"
 
-const oy = [
-  "base",
-  "dark",
-  "deep",
-  "funk",
-  "future",
-  "roboto",
-  "swiss",
-  "system",
-  "tosh",
-  "bootstrap",
-  "bulma",
-  "tailwind",
-]
-
-// const theme = themes.tosh // swiss
+// Available themes
+// "base", "dark", "deep", "funk", "future", "roboto"
+// "swiss", "system", "bootstrap", "bulma", "tailwind"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
