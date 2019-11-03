@@ -1,3 +1,5 @@
+<PageTitle>Readme</PageTitle>
+
 # OpenClipArts, a work in progress
 
 The [oca project](https://github.com/millette/oca) is an SVG explorer for the original `openclipart` project. Since <https://openclipart.org/> has been down for over 6 months, I thought I'd give it a shot. You can have a look at the demo: <http://oca.waglo.com/> (new domain coming soon).
