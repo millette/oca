@@ -41,7 +41,7 @@ git clone https://github.com/millette/oca.git
 cd oca
 npm install
 ln -s [CLIPART_DIR] # From the `openclipart` requirement above.
-ln -s README.md pages/readme.md # Link readme page.
+ln -s ../README.md pages/readme.md # Link readme page.
 node scripts/index # 2 minutes to generate `metadata.json` file.
 ```
 
