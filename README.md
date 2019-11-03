@@ -2,12 +2,7 @@
 
 The [oca project](https://github.com/millette/oca) is an SVG explorer for the original `openclipart` project. Since <https://openclipart.org/> has been down for over 6 months, I thought I'd give it a shot. You can have a look at the demo: <http://oca.waglo.com/> (new domain coming soon).
 
-<details>
-<summary>
-
 ## Requirements
-
-</summary>
 
 ### GNU/Linux / Unix-like OS
 
@@ -36,8 +31,6 @@ wget -o - http://deb.debian.org/debian/pool/main/o/openclipart/openclipart_0.18+
 cd openclipart-0.18+dfsg/clipart/
 pwd # Note the directory [CLIPART_DIR], we'll need it later.
 ```
-
-</details>
 
 ## Installation
 
