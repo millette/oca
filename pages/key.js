@@ -2,6 +2,7 @@
 
 // npm
 import Link from "next/link"
+import Head from "next/head"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 import filesize from "filesize"
@@ -13,6 +14,10 @@ import Svg from "../components/svg"
 
 const Key = ({ d, svg, sizes, k }) => (
   <Flex sx={{ flexWrap: "wrap" }}>
+    <Head>
+      <title>{[d.title, d.creator].join(" by ")} - OpenClipArts Explorer</title>
+    </Head>
+
     <Box sx={{ overflowX: "hidden", width: ["100%", "50%"] }}>
       <Svg svg={svg} />
     </Box>
