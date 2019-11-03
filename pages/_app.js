@@ -56,6 +56,17 @@ const absoluteRe = /^https{0,1}:\/\//
 
 const isAbsolute = absoluteRe.test.bind(absoluteRe)
 
+const PageTitle = ({ children }) => {
+  console.log("TT", children)
+  return (
+    <Head>
+      <title>
+        {[children, "OpenClipArts Explorer"].filter(Boolean).join(" - ")}
+      </title>
+    </Head>
+  )
+}
+
 const components = {
   Sample,
   Svg,
@@ -64,6 +75,7 @@ const components = {
   Box,
   Credits,
   Info,
+  PageTitle,
   a: ({ href, children }) =>
     isAbsolute(href) ? (
       <ExternalLink href={href}>{children}</ExternalLink>
@@ -80,6 +92,7 @@ class MyApp extends App {
     return (
       <ThemeProvider components={components} theme={theme}>
         <Head>
+          <title>Readme - OpenClipArts Explorer</title>
           <link rel="stylesheet" type="text/css" href="/nprogress.css" />
         </Head>
         <ColorMode />
