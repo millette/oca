@@ -27,6 +27,7 @@ import Svg from "../components/svg"
 import Nav from "../components/nav"
 import FooterMdx from "../components/footer.mdx"
 import HeaderMdx from "../components/header.mdx"
+import ExternalLink from "../components/external-link"
 
 if (!theme.breakpoints) theme.breakpoints = ["40em", "56em", "64em"]
 
@@ -54,17 +55,24 @@ Router.events.on("routeChangeStart", nStart)
 Router.events.on("routeChangeComplete", nDone)
 Router.events.on("routeChangeError", nDone)
 
+const absoluteRe = /^https{0,1}:\/\//
+
+const isAbsolute = absoluteRe.test.bind(absoluteRe)
+
 const components = {
   Sample,
   Svg,
   Nav,
   Flex,
   Box,
-  a: ({ href, children }) => (
-    <Link href={href} passHref>
-      <Styled.a>{children}</Styled.a>
-    </Link>
-  ),
+  a: ({ href, children }) =>
+    isAbsolute(href) ? (
+      <ExternalLink href={href}>{children}</ExternalLink>
+    ) : (
+      <Link href={href} passHref>
+        <Styled.a>{children}</Styled.a>
+      </Link>
+    ),
 }
 
 class MyApp extends App {
