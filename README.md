@@ -55,14 +55,15 @@ ls -1F
 
 - components/
 - lib/
+- pages/
+- public/
+- scripts/
+- README.md
 - LICENSE.txt
 - next.config.js
 - package.json
 - package-lock.json
-- pages/
-- public/
-- README.md
-- scripts/
+- theme.js
 
 ### Generated
 
