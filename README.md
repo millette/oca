@@ -1,6 +1,6 @@
 # OpenClipArts, a work in progress
 
-`oca` is an SVG browser for the original `openclipart` project. Since <https://openclipart.org/> has been down for over 6 months, I thought I'd give it a shot.
+The [oca project](https://github.com/millette/oca) is an SVG browser for the original `openclipart` project. Since <https://openclipart.org/> has been down for over 6 months, I thought I'd give it a shot. You can have a look at the demo: <http://oca.waglo.com/>.
 
 ## Requirements
 
