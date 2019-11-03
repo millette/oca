@@ -33,7 +33,7 @@ const Key = ({ d, svg, sizes, k }) => (
               </Styled.a>
             </Styled.td>
 
-            <Styled.td sx={{ textAlign: "right" }}>
+            <Styled.td style={{ textAlign: "right" }}>
               {size(sizes.original)}
             </Styled.td>
           </Styled.tr>
@@ -48,15 +48,17 @@ const Key = ({ d, svg, sizes, k }) => (
               </Styled.a>
             </Styled.td>
 
-            <Styled.td sx={{ textAlign: "right" }}>
+            <Styled.td style={{ textAlign: "right" }}>
               {size(sizes.optimized)}
             </Styled.td>
           </Styled.tr>
 
           <Styled.tr>
             <Styled.th>Ratio</Styled.th>
-            <Styled.td sx={{ fontStyle: "italic" }}>saving</Styled.td>
-            <Styled.td colSpan={2} sx={{ textAlign: "right" }}>
+            <Styled.td colSpan={2} sx={{ fontStyle: "italic" }}>
+              saving
+            </Styled.td>
+            <Styled.td style={{ textAlign: "right" }}>
               {100 - Math.round((100 * sizes.optimized) / sizes.original)}%
             </Styled.td>
           </Styled.tr>
