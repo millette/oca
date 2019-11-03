@@ -57,7 +57,6 @@ const absoluteRe = /^https{0,1}:\/\//
 const isAbsolute = absoluteRe.test.bind(absoluteRe)
 
 const PageTitle = ({ children }) => {
-  console.log("TT", children)
   return (
     <Head>
       <title>
