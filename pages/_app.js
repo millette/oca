@@ -76,23 +76,6 @@ const components = {
 }
 
 class MyApp extends App {
-  /*
-  static async getInitialProps(appContext) {
-    // calls page's `getInitialProps` and fills `appProps.pageProps`
-    const appProps = await App.getInitialProps(appContext);
-      return { ...appProps, ron: "nor" }
-  }
-  */
-
-  /*
-  state = { hs: "" }
-
-  componentDidMount() {
-    this.setState({ hs: "OK" })
-
-  }
-  */
-
   render() {
     const { Component, pageProps } = this.props
     return (
@@ -120,6 +103,10 @@ class MyApp extends App {
             </Footer>
           </Layout>
         </Styled.root>
+        {/* FIXME: move to theme itself or mdxProvider components */}
+        <style jsx global>
+          {"summary > * { display: inline; }"}
+        </style>
       </ThemeProvider>
     )
   }
