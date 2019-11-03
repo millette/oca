@@ -5,3 +5,4 @@ out/
 .env
 metadata.json
 oca.code-workspace
+pages/readme.md
