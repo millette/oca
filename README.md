@@ -10,7 +10,7 @@ This might work on MacOS and Microsoft Windows but I haven't tested it. Let me k
 
 ### Node.js
 
-You'll need Node.js. The quickest way to install it for your local user in the [n-install bash script](https://github.com/mklement0/n-install).
+You'll need Node.js. The quickest way to install it for your local user is the [n-install bash script](https://github.com/mklement0/n-install).
 
 `git` and `curl` are required for `n-install`.
 
@@ -41,7 +41,8 @@ git clone https://github.com/millette/oca.git
 cd oca
 npm install
 ln -s [CLIPART_DIR] # From the `openclipart` requirement above.
-node scripts/index # 2 minutes to generate `metadata.json` file
+ln -s README.md pages/readme.md #
+node scripts/index # 2 minutes to generate `metadata.json` file.
 ```
 
 At this point, your directory should look like this:
