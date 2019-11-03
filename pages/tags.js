@@ -2,6 +2,7 @@
 
 // npm
 import Link from "next/link"
+import Head from "next/head"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 
@@ -10,6 +11,10 @@ import Sample from "../components/sample"
 
 const Tags = ({ t, t2 }) => (
   <>
+    <Head>
+      <title>Tags - OpenClipArts Explorer</title>
+    </Head>
+
     <Styled.h3>All tags</Styled.h3>
     <Flex sx={{ flexWrap: "wrap" }}>
       <Box sx={{ width: ["100%", "50%"] }}>
