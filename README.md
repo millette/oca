@@ -100,6 +100,12 @@ npm run start
 
 Point your browser at <http://localhost:3000/> and voilà, a production build! You can now proxy with through Nginx, Apache http, Caddy or your preferred web server and you're in business.
 
+## Comments? Suggestions?
+
+First, see if there's already a [GitHub issue](https://github.com/millette/oca/issues). You can also [email me](http://robin.millette.info/contact) if you prefer that.
+
+Find out more about the project at our [about](/about) page.
+
 ## License
 
 ### Software
