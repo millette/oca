@@ -38,7 +38,7 @@ const nStart = () => {
   const $svg = document.querySelector("header svg")
   // FIXME: Use request animation frame.....
   routeTimer = setInterval(() => {
-    const n = Math.round((360 * (Date.now() % 700)) / 750)
+    const n = Math.round((360 * (Date.now() % 750)) / 750)
     $svg.style.transform = `rotate(${n}deg)`
   }, 17)
   NProgress.start()
