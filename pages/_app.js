@@ -23,7 +23,6 @@ import {
 // self
 import theme from "../theme"
 import Sample from "../components/sample"
-import Svg from "../components/svg"
 import Nav from "../components/nav"
 import ExternalLink from "../components/external-link"
 import Logo from "../components/logo"
