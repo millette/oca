@@ -26,6 +26,7 @@ import Sample from "../components/sample"
 import Svg from "../components/svg"
 import Nav from "../components/nav"
 import ExternalLink from "../components/external-link"
+import Logo from "../components/logo"
 import FooterMdx from "../components/footer.mdx"
 import Info from "../components/info.mdx"
 import Credits from "../components/credits.mdx"
@@ -34,18 +35,18 @@ import HeaderMdx from "../components/header.mdx"
 let routeTimer
 
 const nStart = () => {
-  NProgress.start()
   const $svg = document.querySelector("header svg")
   // FIXME: Use request animation frame.....
   routeTimer = setInterval(() => {
     const n = Math.round((360 * (Date.now() % 700)) / 750)
     $svg.style.transform = `rotate(${n}deg)`
   }, 17)
+  NProgress.start()
 }
 
 const nDone = () => {
-  NProgress.done()
   clearInterval(routeTimer)
+  NProgress.done()
 }
 
 Router.events.on("routeChangeStart", nStart)
@@ -68,13 +69,13 @@ const PageTitle = ({ children }) => {
 
 const components = {
   Sample,
-  Svg,
   Nav,
   Flex,
   Box,
   Credits,
   Info,
   PageTitle,
+  Logo,
   a: ({ href, children }) =>
     isAbsolute(href) ? (
       <ExternalLink href={href}>{children}</ExternalLink>
