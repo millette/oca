@@ -10,7 +10,6 @@ import ExternalLink from "./external-link"
 const Author = ({ author }) => {
   if (!author || !(author.name || author.url)) return null
   if (!author.url) return <Styled.p>{author.name}</Styled.p>
-  // FIXME: external link
   return (
     <Styled.p>
       <ExternalLink href={author.url}>{author.name}</ExternalLink>
@@ -20,7 +19,7 @@ const Author = ({ author }) => {
 
 const Repository = ({ repository, homepage }) => {
   if (!repository || !repository.url) return null
-  if (repository.type !== "git") return <Styled.p>{repository.url}</Styled.p>
+  // if (repository.type !== "git") return <Styled.p>{repository.url}</Styled.p>
   let u = repository.url.replace(/\.git$/, "").replace(/^git\+/, "")
   if (!/^https{0,1}:\/\//.test(u))
     u = u.replace(/^ssh:\/\/git@/, "https://").replace(/^git:/, "https:")
