@@ -24,6 +24,7 @@ import {
 import theme from "../theme"
 import Sample from "../components/sample"
 import Nav from "../components/nav"
+import Summary from "../components/summary"
 import ExternalLink from "../components/external-link"
 import Logo from "../components/logo"
 import FooterMdx from "../components/footer.mdx"
@@ -67,6 +68,7 @@ const PageTitle = ({ children }) => {
 }
 
 const components = {
+  Summary,
   Sample,
   Nav,
   Flex,
