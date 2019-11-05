@@ -12,5 +12,5 @@ import { tosh as theme } from "@theme-ui/presets"
 // if (!theme.styles.summary) theme.styles.summary = {}
 // theme.styles.summary.cursor = "help"
 
-console.log("theme", JSON.stringify(theme, null, 2))
+// console.log("theme", JSON.stringify(theme, null, 2))
 export default theme
