@@ -13,6 +13,7 @@ const Nav = () => {
       <NavLink href="/tags">Tags</NavLink>
       <Box sx={{ mx: "auto" }}></Box>
       <NavLink href="/readme">Readme</NavLink>
+      <NavLink href="/credits">Credits</NavLink>
       <NavLink href="/about">About</NavLink>
     </Flex>
   )
