@@ -7,6 +7,7 @@ import { tosh as theme } from "@theme-ui/presets"
 
 // There's actually a default...
 // if (!theme.breakpoints) theme.breakpoints = ["44em", "56em", "64em"]
+theme.useColorSchemeMediaQuery = true
 
 // The following does nothing it seems...
 // if (!theme.styles.summary) theme.styles.summary = {}

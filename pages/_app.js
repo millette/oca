@@ -18,6 +18,7 @@ import {
   Flex,
   Box,
   ThemeProvider,
+  useColorMode,
 } from "theme-ui"
 
 // self
@@ -87,6 +88,19 @@ const components = {
     ),
 }
 
+const Toggle = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  return (
+    <button
+      onClick={(e) => {
+        setColorMode(colorMode === "light" ? "dark" : "light")
+      }}
+    >
+      Toggle {colorMode === "light" ? "Dark" : "Light"}
+    </button>
+  )
+}
+
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
@@ -102,6 +116,7 @@ class MyApp extends App {
             <Header>
               <Container>
                 <HeaderMdx />
+                <Toggle />
               </Container>
             </Header>
             <Main>
