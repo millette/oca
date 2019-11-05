@@ -18,13 +18,13 @@ const Credits = (props) => {
         <title>Credits - OpenClipArts Explorer</title>
       </Head>
 
-      <CreditsMdx />
       <details open>
         <Summary>
           <Styled.h4>Dependencies</Styled.h4>
         </Summary>
         <Dependencies deps={props} />
       </details>
+      <CreditsMdx />
     </>
   )
 }
