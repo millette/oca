@@ -1,7 +1,7 @@
 // npm
 import { useState, useEffect } from "react"
 
-const Svg = ({ k, svg }) => {
+const Svg = ({ style, k, svg }) => {
   const [__html, setA] = useState(svg || "")
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Svg = ({ k, svg }) => {
       .then(setA)
   }, [])
 
-  return <div dangerouslySetInnerHTML={{ __html }} />
+  return <div style={style} dangerouslySetInnerHTML={{ __html }} />
 }
 
 export default Svg
