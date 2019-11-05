@@ -78,12 +78,14 @@ const components = {
   Info,
   PageTitle,
   Logo,
-  a: ({ href, children }) =>
+  a: ({ style, href, children }) =>
     isAbsolute(href) ? (
-      <ExternalLink href={href}>{children}</ExternalLink>
+      <ExternalLink style={style} href={href}>
+        {children}
+      </ExternalLink>
     ) : (
       <Link href={href} passHref>
-        <Styled.a>{children}</Styled.a>
+        <Styled.a style={style}>{children}</Styled.a>
       </Link>
     ),
 }
