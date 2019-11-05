@@ -10,7 +10,7 @@ const Nav = () => {
   return (
     <Flex sx={{ alignItems: "center" }}>
       <NavLink href="/">Front</NavLink>
-      <NavLink href="/tags">Tags</NavLink>
+      <NavLink href="/tags">Cliparts</NavLink>
       <Box sx={{ mx: "auto" }}></Box>
       <NavLink href="/readme">Readme</NavLink>
       <NavLink href="/credits">Credits</NavLink>
