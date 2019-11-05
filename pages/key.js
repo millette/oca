@@ -8,25 +8,17 @@ import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 import filesize from "filesize"
 
-const size = filesize.partial({ standard: "iec" })
-
 // self
 import Svg from "../components/svg"
 
-// const forceWhite = undefined // "#fff"
-
+const size = filesize.partial({ standard: "iec" })
 const white = "#fff"
 
 const Key = ({ d, svg, sizes, k }) => {
   const [forceWhite, setForceWhite] = useState({})
-  // const [forced, setForced] = useState()
-
   const handleEnter = () => !forceWhite.forced && setForceWhite({ white })
-
   const handleLeave = () => !forceWhite.forced && setForceWhite({})
-
-  const handleForce = () =>
-    !forceWhite.forced && setForceWhite({ white, forced: true })
+  const handleForce = () => setForceWhite({ white, forced: !forceWhite.forced })
 
   return (
     <Flex sx={{ flexWrap: "wrap" }}>
@@ -37,18 +29,26 @@ const Key = ({ d, svg, sizes, k }) => {
       </Head>
 
       <Box
+        title={
+          forceWhite.forced
+            ? "Click to release white background"
+            : "Click to force a white background"
+        }
+        onClick={handleForce}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
         style={{ background: forceWhite.white }}
         sx={{ textAlign: "right", overflowX: "hidden", width: ["100%", "50%"] }}
       >
-        <Styled.div
-          title="Click to force a white background"
-          as="button"
-          onClick={handleForce}
-          onMouseEnter={handleEnter}
-          onMouseLeave={handleLeave}
+        <Styled.i
+          sx={{
+            p: 2,
+            bg: "background",
+            color: forceWhite.white ? undefined : white,
+          }}
         >
-          White background
-        </Styled.div>
+          Nothing visible?
+        </Styled.i>
         <Svg style={{ padding: "0.5rem" }} svg={svg} />
       </Box>
       <Box sx={{ pl: "1rem", width: ["100%", "50%"] }}>
