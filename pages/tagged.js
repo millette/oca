@@ -41,18 +41,10 @@ const Tagged = ({ d, tag, t2 }) => (
 
 Tagged.getInitialProps = async (o) => {
   const tag = o.query.tag || ""
-  const res = await fetcher(
-    o.req,
-    // "http://localhost:3000/api/tagged-keys?tag=" + tag
-    "api/tagged-keys?tag=" + tag
-  )
+  const res = await fetcher("api/tagged-keys?tag=" + tag, o.req)
   const d = await res.json()
 
-  const res2 = await fetcher(
-    o.req,
-    // "http://localhost:3000/api/sample?tag=" + tag
-    "api/sample?tag=" + tag
-  )
+  const res2 = await fetcher("api/sample?tag=" + tag, o.req)
   const t2 = await res2.json()
 
   return { tag, d, t2 }

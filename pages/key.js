@@ -81,18 +81,10 @@ const Key = ({ d, svg, sizes, k }) => (
 Key.getInitialProps = async (o) => {
   const { key } = o.query
 
-  const res = await fetcher(
-    o.req,
-    // "http://localhost:3000/api/one-key?key=" + key
-    "api/one-key?key=" + key
-  )
+  const res = await fetcher("api/one-key?key=" + key, o.req)
   const d = await res.json()
 
-  const res2 = await fetcher(
-    o.req,
-    // "http://localhost:3000/api/opt-one-key?sizes=1&key=" + key
-    "api/opt-one-key?sizes=1&key=" + key
-  )
+  const res2 = await fetcher("api/opt-one-key?sizes=1&key=" + key, o.req)
 
   const { svg, sizes } = await res2.json()
   return { d, svg, sizes, k: key }

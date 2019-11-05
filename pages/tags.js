@@ -40,8 +40,8 @@ const Tags = ({ t, t2 }) => (
 
 Tags.getInitialProps = async (o) => {
   const r = await Promise.all([
-    fetcher(o.req, "api/tags?n=" + (o.query.n || 50)),
-    fetcher(o.req, "api/sample"),
+    fetcher("api/tags?n=" + (o.query.n || 50), o.req),
+    fetcher("api/sample", o.req),
   ])
   const [t, t2] = await Promise.all(r.map((x) => x.json()))
   return { t, t2 }
