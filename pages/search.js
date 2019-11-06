@@ -3,14 +3,12 @@
 // npm
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Flex, Box } from "theme-ui"
 import Minisearch from "minisearch"
-// import fetcher from "../lib/fetcher"
 
 // self
 import searchIndex from "../search-index.json"
-
-// const what = 'night'
+import Svg from "../components/svg"
 
 const fields = ["title", "subject", "creator", "description"]
 const idx = Minisearch.loadJSON(JSON.stringify(searchIndex), { fields })
@@ -20,6 +18,8 @@ const searchOptions = { combineWith: "AND", fuzzy: 0.15 }
 const autoSuggest = (str) =>
   idx
     .autoSuggest(str, searchOptions)
+    .filter(({ suggestion }) => suggestion !== str)
+    .slice(0, 20)
     .map(({ suggestion, score }) => ({ suggestion, score }))
 
 const searchMapper = (item) => {
@@ -53,37 +53,82 @@ const searchMapper = (item) => {
 
 const search = (str) => idx.search(str, searchOptions).map(searchMapper)
 
-const Suggestions = ({ suggestions }) => {
-  if (!suggestions || !suggestions.length) return null
-  // <Styled.pre>{JSON.stringify(suggestions, null, 2)}</Styled.pre>
+const Suggestions = ({ what, suggestions, pick }) => {
+  if (what.length < 2 || !suggestions || !suggestions.length) return null
+  // <Styled.h4>Did you mean...</Styled.h4>
+
+  // <Styled.div as="small">({Math.round(score)})</Styled.div>
   return (
     <>
-      <Styled.h4>Did you mean...</Styled.h4>
+      <Styled.h5>Other suggestions</Styled.h5>
+      {suggestions.map(({ suggestion, score }) => (
+        <Styled.div
+          as="button"
+          sx={{ m: 1, fontSize: 0 }}
+          onClick={pick.bind(this, suggestion)}
+          key={suggestion}
+        >
+          {suggestion}
+        </Styled.div>
+      ))}
+    </>
+  )
+
+  /*
+  return (
+    <>
       <Styled.ol>
         {suggestions.map(({ suggestion, score }) => (
-          <Styled.li key={suggestion}>
-            {suggestion} ({Math.round(score)})
+          <Styled.li sx={{ listStyle: "none", display: "inline" }} onClick={pick.bind(this, suggestion)} key={suggestion}>
+            {suggestion} <Styled.div as="small">({Math.round(score)})</Styled.div>
           </Styled.li>
         ))}
       </Styled.ol>
+    </>
+  )
+  */
+}
+
+const Match = ({ id, score, match }) => {
+  // <Styled.p>{id} {score}</Styled.p>
+  // <Styled.pre>{JSON.stringify(match, null, 2)}</Styled.pre>
+
+  return (
+    <>
+      <Svg k={id} />
     </>
   )
 }
 
 const Results = ({ ids }) => {
   if (!ids || !ids.length) return null
-  return <Styled.pre>{JSON.stringify(ids, null, 2)}</Styled.pre>
+  return (
+    <>
+      <Styled.p>
+        Number of results: <Styled.b>{ids.length}</Styled.b>
+      </Styled.p>
+      <Flex sx={{ flexWrap: "wrap" }}>
+        {ids.slice(0, 30).map(({ id, score, match }) => (
+          <Box
+            key={`${id}-${score}`}
+            sx={{ p: 2, width: ["100%", "50%", "33.3%"] }}
+          >
+            <Match id={id} score={score} match={match} />
+          </Box>
+        ))}
+      </Flex>
+    </>
+  )
 }
 
 const Search = (props) => {
-  const [what, setWhat] = useState()
+  const [what, setWhat] = useState("")
   const [results, setResults] = useState({})
 
   useEffect(() => {
-    setResults({
-      suggestions: what ? autoSuggest(what) : undefined,
-      ids: what ? search(what) : undefined,
-    })
+    setResults(
+      what ? { suggestions: autoSuggest(what), ids: search(what) } : {}
+    )
   }, [what])
 
   const handleChange = (ev) => setWhat(ev.target.value)
@@ -94,10 +139,24 @@ const Search = (props) => {
         <title>Search - OpenClipArts Explorer</title>
       </Head>
 
-      <Styled.h3>Search</Styled.h3>
-      <Styled.div as="input" defaultValue={what} onChange={handleChange} />
-
-      <Suggestions suggestions={results.suggestions} />
+      <Flex>
+        <Box sx={{ width: "50%" }}>
+          <Styled.h3>Search</Styled.h3>
+          <Styled.div
+            as="input"
+            type="text"
+            value={what}
+            onChange={handleChange}
+          />
+        </Box>
+        <Box sx={{ width: "50%" }}>
+          <Suggestions
+            what={what}
+            pick={setWhat}
+            suggestions={results.suggestions}
+          />
+        </Box>
+      </Flex>
       <Results ids={results.ids} />
     </>
   )
