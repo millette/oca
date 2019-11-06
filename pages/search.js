@@ -15,8 +15,6 @@ const PER_PAGE = 6
 const fields = ["title", "subject", "creator", "description"]
 const idx = Minisearch.loadJSON(JSON.stringify(searchIndex), { fields })
 
-// const page = 2
-
 const searchOptions = { combineWith: "AND", fuzzy: 0.15 }
 
 const autoSuggest = (str) =>
@@ -83,8 +81,32 @@ const Match = ({ id }) => (
   </Link>
 )
 
+const Pager = ({ isMore, page, setPage }) => {
+  return (
+    <Flex sx={{ justifyContent: "space-between" }}>
+      <Box>
+        {page > 0 && (
+          <Styled.div as="button" onClick={() => setPage(page - 1)}>
+            Previous results
+          </Styled.div>
+        )}
+      </Box>
+
+      {isMore() && (
+        <Box>
+          <Styled.div as="button" onClick={() => setPage(page + 1)}>
+            Next results
+          </Styled.div>
+        </Box>
+      )}
+    </Flex>
+  )
+}
+
 const Results = ({ ids }) => {
   const [page, setPage] = useState(0)
+
+  const isMore = () => page + 1 < Math.ceil(ids.length / PER_PAGE)
 
   useEffect(() => {
     setPage(0)
@@ -96,9 +118,9 @@ const Results = ({ ids }) => {
       <Styled.p>
         Number of results: <Styled.b>{ids.length}</Styled.b>
       </Styled.p>
-      <Styled.div as="button" onClick={() => setPage(page + 1)}>
-        Next results {page}
-      </Styled.div>
+
+      <Pager isMore={isMore} page={page} setPage={setPage} />
+
       <Flex sx={{ flexWrap: "wrap" }}>
         {ids
           .slice(page * PER_PAGE, (page + 1) * PER_PAGE)
@@ -111,9 +133,8 @@ const Results = ({ ids }) => {
             </Box>
           ))}
       </Flex>
-      <Styled.div as="button" onClick={() => setPage(page + 1)}>
-        Next results
-      </Styled.div>
+
+      <Pager isMore={isMore} page={page} setPage={setPage} />
     </>
   )
 }
