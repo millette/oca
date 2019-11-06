@@ -112,7 +112,7 @@ const Results = ({ ids }) => {
         Number of results: <Styled.b>{ids.length}</Styled.b>
       </Styled.p>
       <Flex sx={{ flexWrap: "wrap" }}>
-        {ids.slice(0, 30).map(({ id, score, match }) => (
+        {ids.slice(0, 12).map(({ id, score, match }) => (
           <Box
             key={`${id}-${score}`}
             sx={{ p: 2, width: ["100%", "50%", "33.3%"] }}
@@ -125,8 +125,8 @@ const Results = ({ ids }) => {
   )
 }
 
-const Search = (props) => {
-  const [what, setWhat] = useState("")
+const Search = ({ from }) => {
+  const [what, setWhat] = useState(from)
   const [results, setResults] = useState({})
 
   useEffect(() => {
@@ -154,7 +154,7 @@ const Search = (props) => {
             onChange={handleChange}
           />
         </Box>
-        <Box sx={{ width: "50%" }}>
+        <Box sx={{ textAlign: "right", width: "50%" }}>
           <Suggestions
             what={what}
             pick={setWhat}
@@ -165,6 +165,12 @@ const Search = (props) => {
       <Results ids={results.ids} />
     </>
   )
+}
+
+Search.getInitialProps = async (o) => {
+  return {
+    from: o.query.from || "",
+  }
 }
 
 export default Search
