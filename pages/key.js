@@ -56,7 +56,7 @@ const Key = ({ d, svg, sizes, k }) => {
 
         <Styled.h2>
           by{" "}
-          <Link href={`/search?from=${d.creator}`} passHref>
+          <Link href={`/search?from=${d.creator.toLowerCase()}`} passHref>
             <Styled.a>{d.creator}</Styled.a>
           </Link>
         </Styled.h2>
