@@ -11,8 +11,11 @@ import Minisearch from "minisearch"
 import searchIndex from "../search-index.json"
 import Svg from "../components/svg"
 
+const PER_PAGE = 6
 const fields = ["title", "subject", "creator", "description"]
 const idx = Minisearch.loadJSON(JSON.stringify(searchIndex), { fields })
+
+// const page = 2
 
 const searchOptions = { combineWith: "AND", fuzzy: 0.15 }
 
@@ -72,7 +75,7 @@ const Suggestions = ({ what, suggestions, pick }) =>
     </>
   )
 
-const Match = ({ id, score, match }) => (
+const Match = ({ id }) => (
   <Link href={`/key?key=${id}`} passHref>
     <Styled.a>
       <Svg k={id} />
@@ -81,22 +84,36 @@ const Match = ({ id, score, match }) => (
 )
 
 const Results = ({ ids }) => {
+  const [page, setPage] = useState(0)
+
+  useEffect(() => {
+    setPage(0)
+  }, [ids])
+
   if (!ids || !ids.length) return null
   return (
     <>
       <Styled.p>
         Number of results: <Styled.b>{ids.length}</Styled.b>
       </Styled.p>
+      <Styled.div as="button" onClick={() => setPage(page + 1)}>
+        Next results {page}
+      </Styled.div>
       <Flex sx={{ flexWrap: "wrap" }}>
-        {ids.slice(0, 12).map(({ id, score, match }) => (
-          <Box
-            key={`${id}-${score}`}
-            sx={{ p: 2, width: ["100%", "50%", "33.3%"] }}
-          >
-            <Match id={id} score={score} match={match} />
-          </Box>
-        ))}
+        {ids
+          .slice(page * PER_PAGE, (page + 1) * PER_PAGE)
+          .map(({ id, score, match }) => (
+            <Box
+              key={`${id}-${score}`}
+              sx={{ p: 2, width: ["100%", "50%", "33.3%"] }}
+            >
+              <Match id={id} score={score} match={match} />
+            </Box>
+          ))}
       </Flex>
+      <Styled.div as="button" onClick={() => setPage(page + 1)}>
+        Next results
+      </Styled.div>
     </>
   )
 }
