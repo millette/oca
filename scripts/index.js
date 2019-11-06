@@ -1,3 +1,5 @@
+"use strict"
+
 // core
 const fs = require("fs")
 const { pipeline } = require("stream")
