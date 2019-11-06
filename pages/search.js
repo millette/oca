@@ -54,12 +54,8 @@ const searchMapper = (item) => {
 
 const search = (str) => idx.search(str, searchOptions).map(searchMapper)
 
-const Suggestions = ({ what, suggestions, pick }) => {
-  if (what.length < 2 || !suggestions || !suggestions.length) return null
-  // <Styled.h4>Did you mean...</Styled.h4>
-
-  // <Styled.div as="small">({Math.round(score)})</Styled.div>
-  return (
+const Suggestions = ({ what, suggestions, pick }) =>
+  what.length < 2 || !suggestions || !suggestions.length ? null : (
     <>
       <Styled.h5>Other suggestions</Styled.h5>
       {suggestions.map(({ suggestion, score }) => (
@@ -76,33 +72,13 @@ const Suggestions = ({ what, suggestions, pick }) => {
     </>
   )
 
-  /*
-  return (
-    <>
-      <Styled.ol>
-        {suggestions.map(({ suggestion, score }) => (
-          <Styled.li sx={{ listStyle: "none", display: "inline" }} onClick={pick.bind(this, suggestion)} key={suggestion}>
-            {suggestion} <Styled.div as="small">({Math.round(score)})</Styled.div>
-          </Styled.li>
-        ))}
-      </Styled.ol>
-    </>
-  )
-  */
-}
-
-const Match = ({ id, score, match }) => {
-  // <Styled.p>{id} {score}</Styled.p>
-  // <Styled.pre>{JSON.stringify(match, null, 2)}</Styled.pre>
-
-  return (
-    <Link href={`/key?key=${id}`} passHref>
-      <Styled.a>
-        <Svg k={id} />
-      </Styled.a>
-    </Link>
-  )
-}
+const Match = ({ id, score, match }) => (
+  <Link href={`/key?key=${id}`} passHref>
+    <Styled.a>
+      <Svg k={id} />
+    </Styled.a>
+  </Link>
+)
 
 const Results = ({ ids }) => {
   if (!ids || !ids.length) return null
@@ -126,7 +102,7 @@ const Results = ({ ids }) => {
 }
 
 const Search = ({ from }) => {
-  const [what, setWhat] = useState(from)
+  const [what, setWhat] = useState(from || "")
   const [results, setResults] = useState({})
 
   useEffect(() => {
@@ -167,10 +143,5 @@ const Search = ({ from }) => {
   )
 }
 
-Search.getInitialProps = async (o) => {
-  return {
-    from: o.query.from || "",
-  }
-}
-
+Search.getInitialProps = async ({ query: { from } }) => ({ from })
 export default Search
