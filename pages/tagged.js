@@ -16,6 +16,15 @@ const Tagged = ({ d, tag, t2 }) => (
     </Head>
 
     <Styled.h3>Tagged with {tag}</Styled.h3>
+
+    <Styled.p>
+      You can also{" "}
+      <Link href={`/search?from=${tag}`} passHref>
+        <Styled.a>search for cliparts with the {tag} query</Styled.a>
+      </Link>
+      .
+    </Styled.p>
+
     <Flex sx={{ flexWrap: "wrap" }}>
       <Box sx={{ width: ["100%", "50%"] }}>
         <Styled.ol>
