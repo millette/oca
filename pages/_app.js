@@ -68,7 +68,23 @@ const PageTitle = ({ children }) => {
   )
 }
 
+const Toggle = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  return (
+    <Styled.div
+      as="button"
+      sx={{ fontSize: "0.7rem", width: "100%", fontWeight: 700 }}
+      onClick={(e) => {
+        setColorMode(colorMode === "light" ? "dark" : "light")
+      }}
+    >
+      {colorMode === "light" ? "Dark" : "Light"}
+    </Styled.div>
+  )
+}
+
 const components = {
+  Toggle,
   Summary,
   Sample,
   Nav,
@@ -90,19 +106,6 @@ const components = {
     ),
 }
 
-const Toggle = () => {
-  const [colorMode, setColorMode] = useColorMode()
-  return (
-    <button
-      onClick={(e) => {
-        setColorMode(colorMode === "light" ? "dark" : "light")
-      }}
-    >
-      Toggle {colorMode === "light" ? "Dark" : "Light"}
-    </button>
-  )
-}
-
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
@@ -118,7 +121,6 @@ class MyApp extends App {
             <Header>
               <Container>
                 <HeaderMdx />
-                <Toggle />
               </Container>
             </Header>
             <Main>
