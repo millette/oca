@@ -23,6 +23,6 @@ for (const id in data) {
 
 // console.log(JSON.stringify(idx))
 
-writeFile("hola-out.json", JSON.stringify(idx), (err) => {
+writeFile("search-index.json", JSON.stringify(idx), (err) => {
   console.log("DONE", err || "")
 })
