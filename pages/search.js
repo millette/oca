@@ -60,15 +60,16 @@ const Suggestions = ({ what, suggestions, pick }) =>
     <>
       <Styled.h5>Other suggestions</Styled.h5>
       {suggestions.map(({ suggestion, score }) => (
-        <Styled.div
-          title={`Score: ${score}`}
-          as="button"
-          sx={{ m: 1, fontSize: 0 }}
-          onClick={pick.bind(this, suggestion)}
-          key={suggestion}
-        >
-          {suggestion}
-        </Styled.div>
+        <Link key={suggestion} href={`/search?from=${suggestion}`} passHref>
+          <Styled.a
+            title={`Score: ${score}`}
+            // as="button"
+            sx={{ m: 1, fontSize: 0 }}
+            onClick={pick.bind(this, suggestion)}
+          >
+            {suggestion}
+          </Styled.a>
+        </Link>
       ))}
     </>
   )
@@ -83,7 +84,7 @@ const Match = ({ id }) => (
 
 const Pager = ({ isMore, page, setPage }) => {
   return (
-    <Flex sx={{ justifyContent: "space-between" }}>
+    <Flex sx={{ my: "1rem", justifyContent: "space-between" }}>
       <Box>
         {page > 0 && (
           <Styled.div as="button" onClick={() => setPage(page - 1)}>
@@ -127,7 +128,13 @@ const Results = ({ ids }) => {
           .map(({ id, score, match }) => (
             <Box
               key={`${id}-${score}`}
-              sx={{ p: 2, width: ["100%", "50%", "33.3%"] }}
+              sx={{
+                ":hover": { bg: "#fff" },
+                p: 2,
+                overflow: "hidden",
+                maxHeight: "300px",
+                width: ["100%", "50%", "33.3%"],
+              }}
             >
               <Match id={id} score={score} match={match} />
             </Box>
