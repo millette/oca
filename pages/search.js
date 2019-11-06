@@ -2,6 +2,7 @@
 
 // npm
 import Head from "next/head"
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 import Minisearch from "minisearch"
@@ -63,6 +64,7 @@ const Suggestions = ({ what, suggestions, pick }) => {
       <Styled.h5>Other suggestions</Styled.h5>
       {suggestions.map(({ suggestion, score }) => (
         <Styled.div
+          title={`Score: ${score}`}
           as="button"
           sx={{ m: 1, fontSize: 0 }}
           onClick={pick.bind(this, suggestion)}
@@ -94,9 +96,11 @@ const Match = ({ id, score, match }) => {
   // <Styled.pre>{JSON.stringify(match, null, 2)}</Styled.pre>
 
   return (
-    <>
-      <Svg k={id} />
-    </>
+    <Link href={`/key?key=${id}`} passHref>
+      <Styled.a>
+        <Svg k={id} />
+      </Styled.a>
+    </Link>
   )
 }
 
@@ -140,9 +144,10 @@ const Search = (props) => {
       </Head>
 
       <Flex>
-        <Box sx={{ width: "50%" }}>
+        <Box sx={{ pr: "2rem", width: "50%" }}>
           <Styled.h3>Search</Styled.h3>
           <Styled.div
+            sx={{ width: "100%" }}
             as="input"
             type="text"
             value={what}
