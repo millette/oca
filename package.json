@@ -1,6 +1,7 @@
 {
   "name": "oca",
   "version": "0.0.0",
+  "description": "Discover SVG cliparts with a few clicks and keywords.",
   "author": {
     "name": "Robin Millette",
     "email": "robin@millette.info",
@@ -64,6 +65,7 @@
     "lodash.uniq": "^4.5.0",
     "minisearch": "^2.1.3",
     "next": "^9.1.2",
+    "next-seo": "^2.2.1",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
