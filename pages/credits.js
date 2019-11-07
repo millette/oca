@@ -1,7 +1,6 @@
 /** @jsx jsx */
 
 // npm
-import Head from "next/head"
 import { jsx, Styled } from "theme-ui"
 import fetcher from "../lib/fetcher"
 
@@ -9,15 +8,13 @@ import fetcher from "../lib/fetcher"
 import CreditsMdx from "../components/credits.mdx"
 import Dependencies from "../components/deps"
 import Summary from "../components/summary"
+import PageTitle from "../components/page-title"
 
 const Credits = (props) => {
   if (props.error) return "Not good: " + props.error
   return (
     <>
-      <Head>
-        <title>Credits - OpenClipArts Explorer</title>
-      </Head>
-
+      <PageTitle>Credits</PageTitle>
       <details open>
         <Summary>
           <Styled.h4>Dependencies</Styled.h4>
