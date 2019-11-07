@@ -2,19 +2,16 @@
 
 // npm
 import Link from "next/link"
-import Head from "next/head"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
 
 // self
 import Sample from "../components/sample"
+import PageTitle from "../components/page-title"
 
 const Tagged = ({ d, tag, t2 }) => (
   <>
-    <Head>
-      <title>Tagged with {tag} - OpenClipArts Explorer</title>
-    </Head>
-
+    <PageTitle>{`Tagged with ${tag}`}</PageTitle>
     <Styled.h3>Tagged with {tag}</Styled.h3>
 
     <Styled.p>
