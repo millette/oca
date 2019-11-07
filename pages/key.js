@@ -2,7 +2,6 @@
 
 // npm
 import Link from "next/link"
-import Head from "next/head"
 import { useState } from "react"
 import fetcher from "../lib/fetcher"
 import { jsx, Styled, Flex, Box } from "theme-ui"
@@ -10,6 +9,7 @@ import filesize from "filesize"
 
 // self
 import Svg from "../components/svg"
+import PageTitle from "../components/page-title"
 
 const size = filesize.partial({ standard: "iec" })
 const white = "#fff"
@@ -22,12 +22,7 @@ const Key = ({ d, svg, sizes, k }) => {
 
   return (
     <Flex sx={{ flexWrap: "wrap" }}>
-      <Head>
-        <title>
-          {[d.title, d.creator].join(" by ")} - OpenClipArts Explorer
-        </title>
-      </Head>
-
+      <PageTitle>{[d.title, d.creator].join(" by ")}</PageTitle>
       <Box
         title={
           forceWhite.forced
