@@ -9,7 +9,7 @@ import NavLink from "./nav-link"
 const Nav = () => {
   return (
     <Flex sx={{ alignItems: "center" }}>
-      <NavLink href="/">Frontpage</NavLink>
+      <NavLink href="/">Welcome</NavLink>
       <NavLink href="/search">Search</NavLink>
       <NavLink href="/tags">Browse</NavLink>
       <Box sx={{ mx: "auto" }}></Box>
