@@ -8,8 +8,17 @@
     "cardType": "summary"
   },
   "openGraph": {
+    "description": "Discover SVG cliparts with a few clicks and keywords.",
     "url": "http://oca.waglo.com/",
     "type": "website",
-    "site_name": "OpenClipArts Explorer"
+    "site_name": "OpenClipArts Explorer",
+    "images": [
+      {
+        "url": "http://oca.waglo.com/imgs/social-logo.png",
+        "width": 442,
+        "height": 442,
+        "alt": "OpenClipArts Explorer Website Logo"
+      }
+    ]
   }
 }
