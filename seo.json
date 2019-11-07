@@ -1,0 +1,15 @@
+{
+  "titleTemplate": "%s - OpenClipArts Explorer",
+  "title": "Readme",
+  "description": "Discover SVG cliparts with a few clicks and keywords.",
+  "twitter": {
+    "handle": "@RoLLodeQc",
+    "site": "@RoLLodeQc",
+    "cardType": "summary"
+  },
+  "openGraph": {
+    "url": "http://oca.waglo.com/",
+    "type": "website",
+    "site_name": "OpenClipArts Explorer"
+  }
+}
