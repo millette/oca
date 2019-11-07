@@ -1,7 +1,6 @@
 /** @jsx jsx */
 
 // npm
-import Head from "next/head"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { jsx, Styled, Flex, Box } from "theme-ui"
@@ -10,6 +9,7 @@ import Minisearch from "minisearch"
 // self
 import searchIndex from "../search-index.json"
 import Svg from "../components/svg"
+import PageTitle from "../components/page-title"
 
 const PER_PAGE = 6
 const fields = ["title", "subject", "creator", "description"]
@@ -160,10 +160,7 @@ const Search = ({ from }) => {
 
   return (
     <>
-      <Head>
-        <title>Search - OpenClipArts Explorer</title>
-      </Head>
-
+      <PageTitle>Search</PageTitle>
       <Flex>
         <Box sx={{ pr: "2rem", width: "50%" }}>
           <Styled.h3>Search</Styled.h3>
