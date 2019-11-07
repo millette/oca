@@ -6,6 +6,7 @@ import Link from "next/link"
 import Router from "next/router"
 import Head from "next/head"
 import NProgress from "nprogress"
+import { NextSeo } from "next-seo"
 import {
   jsx,
   Layout,
@@ -22,8 +23,10 @@ import {
 } from "theme-ui"
 
 // self
+import SeoConfig from "../seo.json"
 import theme from "../theme"
 import Sample from "../components/sample"
+import PageTitle from "../components/page-title"
 import Nav from "../components/nav"
 import Summary from "../components/summary"
 import ExternalLink from "../components/external-link"
@@ -57,16 +60,6 @@ Router.events.on("routeChangeError", nDone)
 const absoluteRe = /^https{0,1}:\/\//
 
 const isAbsolute = absoluteRe.test.bind(absoluteRe)
-
-const PageTitle = ({ children }) => {
-  return (
-    <Head>
-      <title>
-        {[children, "OpenClipArts Explorer"].filter(Boolean).join(" - ")}
-      </title>
-    </Head>
-  )
-}
 
 const Toggle = () => {
   const [colorMode, setColorMode] = useColorMode()
@@ -111,8 +104,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ThemeProvider components={components} theme={theme}>
+        <NextSeo {...SeoConfig} />
+
         <Head>
-          <title>Readme - OpenClipArts Explorer</title>
           <link rel="stylesheet" type="text/css" href="/nprogress.css" />
         </Head>
         <ColorMode />
