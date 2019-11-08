@@ -11,8 +11,10 @@
     "node": ">=12.13.0"
   },
   "scripts": {
+    "analyze": "ANALYZE=true next build",
     "dev": "next",
     "build": "next build",
+    "clean": "rm -fr .next",
     "export": "next export",
     "healthier": "healthier",
     "start": "next start",
@@ -77,6 +79,7 @@
     "xml-flow": "^1.0.4"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "9.1.2",
     "babel-eslint": "^10.0.3",
     "healthier": "^3.2.0",
     "husky": "^2.7.0",
