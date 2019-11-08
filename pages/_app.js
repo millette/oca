@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 // npm
-import App from "next/app"
+// import App from "next/app"
 import Link from "next/link"
 import Router from "next/router"
 import Head from "next/head"
@@ -99,43 +99,38 @@ const components = {
     ),
 }
 
-class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props
-    return (
-      <ThemeProvider components={components} theme={theme}>
-        <NextSeo {...SeoConfig} />
+const MyApp = ({ Component, pageProps }) => (
+  <ThemeProvider components={components} theme={theme}>
+    <NextSeo {...SeoConfig} />
 
-        <Head>
-          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
-        </Head>
-        <ColorMode />
-        <Styled.root>
-          <Layout>
-            <Header>
-              <Container>
-                <HeaderMdx />
-              </Container>
-            </Header>
-            <Main>
-              <Container>
-                <Component {...pageProps} />
-              </Container>
-            </Main>
-            <Footer>
-              <Container>
-                <FooterMdx />
-              </Container>
-            </Footer>
-          </Layout>
-        </Styled.root>
-        {/* FIXME: move to theme itself or mdxProvider components */}
-        <style jsx global>
-          {"summary > * { display: inline; }"}
-        </style>
-      </ThemeProvider>
-    )
-  }
-}
+    <Head>
+      <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+    </Head>
+    <ColorMode />
+    <Styled.root>
+      <Layout>
+        <Header>
+          <Container>
+            <HeaderMdx />
+          </Container>
+        </Header>
+        <Main>
+          <Container>
+            <Component {...pageProps} />
+          </Container>
+        </Main>
+        <Footer>
+          <Container>
+            <FooterMdx />
+          </Container>
+        </Footer>
+      </Layout>
+    </Styled.root>
+    {/* FIXME: move to theme itself or mdxProvider components */}
+    <style jsx global>
+      {"summary > * { display: inline; }"}
+    </style>
+  </ThemeProvider>
+)
 
 export default MyApp
