@@ -2,4 +2,5 @@ github: millette
 issuehunt: millette
 liberapay: millette
 open_collective: millette
-custom: ["bitcoin:bc1qv5dtka7kg7r523z5aryrs54374qw2qu5sn9vc7", "bitcoin:1PzGabBG3Q5GmN3C6hLTqUKUkbvyGcGCq3", "web+stellar:pay?destination=GDAKRIISFIN4PS6QFY4ADVBRXQCPNSX53GC5SB5H7OEDXWMZ3UG7G6KT"]
+# github no likes non-http(s) links
+# custom: ["bitcoin:bc1qv5dtka7kg7r523z5aryrs54374qw2qu5sn9vc7", "bitcoin:1PzGabBG3Q5GmN3C6hLTqUKUkbvyGcGCq3", "web+stellar:pay?destination=GDAKRIISFIN4PS6QFY4ADVBRXQCPNSX53GC5SB5H7OEDXWMZ3UG7G6KT"]
