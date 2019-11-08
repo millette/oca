@@ -1,7 +1,6 @@
 /** @jsx jsx */
 
 // npm
-// import App from "next/app"
 import Link from "next/link"
 import Router from "next/router"
 import Head from "next/head"
