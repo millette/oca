@@ -42,7 +42,8 @@ cd oca
 npm install
 ln -s [CLIPART_DIR] # From the `openclipart` requirement above.
 ln -s ../README.md pages/readme.md # Link readme page.
-node scripts/index # 2 minutes to generate `metadata.json` file.
+node scripts/index # 2 minutes to generate `metadata.json`.
+node scripts/indexer # generate `search-index.json`.
 ```
 
 At this point, your directory should look like this:
@@ -70,6 +71,7 @@ ls -1F
 - clipart@
 - node_modules/
 - metadata.json
+- search-index.json
 
 ## Develop
 
