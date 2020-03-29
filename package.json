@@ -78,7 +78,7 @@
     "xml-flow": "^1.0.4"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.1.7",
+    "@next/bundle-analyzer": "^9.3.2",
     "babel-eslint": "^10.0.3",
     "healthier": "^3.3.0",
     "husky": "^4.2.3",
